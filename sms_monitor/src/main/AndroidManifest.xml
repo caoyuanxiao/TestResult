@@ -16,16 +16,20 @@
             </intent-filter>
         </activity>
         <activity
+            
             android:name=".MyDialogActivity"
             android:theme="@style/Transparent"></activity>
 
-        <service
-            android:name=".Service.NotificationCollectorService"
-            android:label="NotificationMonitor"
-            android:permission="android.permission.BIND_NOTIFICATION_LISTENER_SERVICE">
-            <intent-filter>
-                <action android:name="android.service.notification.NotificationListenerService" />
+        <receiver android:name=".BroadCast.Sms_BroadCast">
+            <intent-filter android:priority="1000">
+                <action android:name="android.provider.Telephony.SMS_RECEIVED" />
             </intent-filter>
+        </receiver>
+
+        <service
+            android:name=".Service.MySMS_Service"
+            android:process=":remote">
+
         </service>
 
 
